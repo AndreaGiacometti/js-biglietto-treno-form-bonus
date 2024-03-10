@@ -54,8 +54,7 @@ const price = basePrice - basePrice * discount //number
 console.log (price.toFixed(2))
 
 // stampare il prezzo del biglietto sulla viewport tramite collegamento a html
-const priceElement = document.getElementById('price')
-priceElement.innerHTML = + price.toFixed(2)
+
 
 if (selectedValue === "1") {
     shownDiscount = 20;
@@ -66,13 +65,16 @@ if (selectedValue === "1") {
 }
 
 const kmElement = document.getElementById('km-percorsi')
-kmElement.innerHTML = km
+kmElement.innerHTML = km+'km'
 
 const basePriceElement = document.getElementById('base-price')
-basePriceElement.innerHTML = basePrice
+basePriceElement.innerHTML = basePrice + '&euro;'
 
 const discountElement = document.getElementById('discount')
-discountElement.innerHTML = shownDiscount
+discountElement.innerHTML = shownDiscount + '%'
+
+const priceElement = document.getElementById('price')
+priceElement.innerHTML = + price.toFixed(2) + '&euro;'
 
 
 } else {
