@@ -39,15 +39,13 @@ const basePrice = (km * pricePerKm); //number
 //console.log(basePrice)
 
 // impostare le variabili di sconto
-var discount;
     if (selectedValue === "1") {
         discount = 0.2;
     } else if (selectedValue === "2") {
         discount = 0.4;
     } else if (selectedValue === "3") {
        discount = 0;
-    } else {
-    }
+    } 
 
 // calcolare il prezzo del biglietto applicando gli sconti
 const price = basePrice - basePrice * discount //number
@@ -57,7 +55,26 @@ console.log (price.toFixed(2))
 
 // stampare il prezzo del biglietto sulla viewport tramite collegamento a html
 const priceElement = document.getElementById('price')
-priceElement.innerHTML = + price.toFixed(2) + '&euro;'
+priceElement.innerHTML = + price.toFixed(2)
+
+if (selectedValue === "1") {
+    shownDiscount = 20;
+} else if (selectedValue === "2") {
+    shownDiscount = 40;
+} else if (selectedValue === "3") {
+   shownDiscount = 0;
+}
+
+const kmElement = document.getElementById('km-percorsi')
+kmElement.innerHTML = km
+
+const basePriceElement = document.getElementById('base-price')
+basePriceElement.innerHTML = basePrice
+
+const discountElement = document.getElementById('discount')
+discountElement.innerHTML = shownDiscount
+
+
 } else {
     //ALTRIMENTI 
     alert('I dati inseriti non sono validi e/o nessuna opzione di sconto selezionata')
