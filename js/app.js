@@ -9,8 +9,12 @@ const buttonElement = document.getElementById('submit') //object
 console.log(buttonElement)
 
 // abilitare ascolto clic sul bottone
-buttonElement.addEventListener('click', function () {
-	console.log('click on button')
+// buttonElement.addEventListener('click', function () {
+// 	console.log('click on button')
+const formElement = document.getElementById('ticket-form');
+    formElement.addEventListener('submit', function (event) {
+        // Impedisco che il form venga effettivamente inviato e la pagina si ricarichi
+        event.preventDefault();
 
 // recuperare l'opzione selezionata dal dropdown menu
 const discountList = document.getElementById("discount-list");
@@ -48,10 +52,7 @@ const basePrice = (km * pricePerKm); //number
     } 
 
 // calcolare il prezzo del biglietto applicando gli sconti
-const price = basePrice - basePrice * discount //number
-
-// stampare il prezzo finale riducendo il numero di cifre decimali a 2
-console.log (price.toFixed(2))
+const price = (basePrice - basePrice * discount) //number
 
 // stampare il prezzo del biglietto sulla viewport tramite collegamento a html
 
@@ -68,13 +69,13 @@ const kmElement = document.getElementById('km-percorsi')
 kmElement.innerHTML = km+'km'
 
 const basePriceElement = document.getElementById('base-price')
-basePriceElement.innerHTML = basePrice + '&euro;'
+basePriceElement.innerHTML = basePrice.toFixed(2) + '&euro;'
 
 const discountElement = document.getElementById('discount')
 discountElement.innerHTML = shownDiscount + '%'
 
 const priceElement = document.getElementById('price')
-priceElement.innerHTML = + price.toFixed(2) + '&euro;'
+priceElement.innerHTML = price.toFixed(2) + '&euro;'
 
 
 } else {
