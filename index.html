@@ -18,12 +18,13 @@
                             <input type="text" class="form-control" id="km" aria-describedby="" placeholder="Inserisci il numero di km che dovrai percorrere">
                         </div>
                         <!-- Creo select per tipo di sconto -->
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Scegli il tipo di sconto in base all'età</option>
-                            <option id="minore18" value="1">ho meno di 18 anni</option>
-                            <option id="maggiore65" value="2">ho più di 65 anni</option>
-                          </select>
-                        <button type="submit" id="submit" class="btn btn-primary mt-2">Submit</button>
+                            <select id="discount-list" class="form-select" aria-label="Default select example">
+                                <option value="0">Scegli il tipo di sconto in base all'età</option>
+                                <option value="1">minorenne</option>
+                                <option value="2">over65</option>
+                                <option value="3">nessuno sconto</option>
+                            </select>
+                            <button type="submit" id="submit" class="btn btn-primary mt-2">Submit</button>
                     </div>
                 </div>
 

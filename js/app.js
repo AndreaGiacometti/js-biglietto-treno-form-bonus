@@ -4,11 +4,6 @@
 const kmInputElement = document.getElementById('km') 
 console.log(kmInputElement)
 
-
-// recuperare l’eta dall’input dell’età
-const ageInputElement = document.getElementById('age') //object
-console.log(ageInputElement)
-
 // definire l'elemento bottone
 const buttonElement = document.getElementById('submit') //object
 console.log(buttonElement)
@@ -17,14 +12,24 @@ console.log(buttonElement)
 buttonElement.addEventListener('click', function () {
 	console.log('click on button')
 
+// recuperare l'opzione selezionata dal dropdown menu
+const discountList = document.getElementById("discount-list");
+const selectedValue = discountList.value;
 
 // chiedere il numero dei km da percorrere
 const km = parseFloat(kmInputElement.value); //number
 //console.log(km)
 
-// chiedere l'età
-const age = parseFloat(ageInputElement.value) //number
-//console.log(age)
+// validare i dati
+// - km > 0
+console.log(km > 0)
+// - km non è NaN
+console.log(!isNaN(km))
+//selectedValue != "0" è diverso da 0
+console.log(selectedValue != "0")
+
+//Se i dati sono validi
+if (km > 0 && !isNaN(km) && selectedValue != "0") {
 
 // impostare variabile prezzo al km
 const pricePerKm = 0.21; //number
@@ -34,13 +39,15 @@ const basePrice = (km * pricePerKm); //number
 //console.log(basePrice)
 
 // impostare le variabili di sconto
-let discount = 0 //number
-
-if (age < 18) {
-    discount = 0.2 //number
-} else if (age > 65) {
-    discount = 0.4 //number
-}
+var discount;
+    if (selectedValue === "1") {
+        discount = 0.2;
+    } else if (selectedValue === "2") {
+        discount = 0.4;
+    } else if (selectedValue === "3") {
+       discount = 0;
+    } else {
+    }
 
 // calcolare il prezzo del biglietto applicando gli sconti
 const price = basePrice - basePrice * discount //number
@@ -51,4 +58,8 @@ console.log (price.toFixed(2))
 // stampare il prezzo del biglietto sulla viewport tramite collegamento a html
 const priceElement = document.getElementById('price')
 priceElement.innerHTML = + price.toFixed(2) + '&euro;'
+} else {
+    //ALTRIMENTI 
+    alert('I dati inseriti non sono validi e/o nessuna opzione di sconto selezionata')
+}
 })
